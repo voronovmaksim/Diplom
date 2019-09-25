@@ -12,7 +12,7 @@ centroids = [m1 m2 m3 m4];
 
  data = generateDataWithNoise(centroids,countData, matExp, dispersion, false);
 
-% [newCentroids, indexOfDataCluster] = kMeans(data,centroids,1);
-% newCentroids
-% indexOfDataCluster
+[newCentroids, indexOfDataCluster] = kMeans(data,centroids,11);
+ newCentroids
+ indexOfDataCluster
 

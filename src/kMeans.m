@@ -1,12 +1,13 @@
 function [newCentroidsOut,indexOfDataIsClusterOut] = kMeans(data, centroids, maxRecursion)
-    numOfClusters=length(centroids);
+   
+    %[countLine,numOfClusters] = size(centroids)
 
-    distance = abs(data-centroids');
+    distance = getDistance(data, centroids);
     [smallerDistance, indexOfDataIsCluster] = min (distance);
 
-    centroidNodeSum = zeros(1,numOfClusters);
+    centroidNodeSum = zeros(size(centroids));
     for i=1:1:length(indexOfDataIsCluster)
-         centroidNodeSum(indexOfDataIsCluster(i)) = centroidNodeSum(indexOfDataIsCluster(i)) + data(i);
+         centroidNodeSum(:,indexOfDataIsCluster(i)) = centroidNodeSum(:,indexOfDataIsCluster(i)) + data(:,i);
     end
 
     clusters = unique(indexOfDataIsCluster);
@@ -16,7 +17,7 @@ function [newCentroidsOut,indexOfDataIsClusterOut] = kMeans(data, centroids, max
         clusterNodeCount(j) = sum(indexOfDataIsCluster == cluster);
     end
 
-    newCentroids = fix(centroidNodeSum./clusterNodeCount);
+    newCentroids = centroidNodeSum./clusterNodeCount;
 
     isAchived = true;
 
