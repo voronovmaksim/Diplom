@@ -1,4 +1,4 @@
-function [newCentroidsOut,indexOfDataIsClusterOut] = kMeans(data, centroids)
+function [newCentroidsOut,indexOfDataIsClusterOut] = kMeans(data, centroids, maxRecursion)
     numOfClusters=length(centroids);
 
     distance = abs(data-centroids');
@@ -25,8 +25,8 @@ function [newCentroidsOut,indexOfDataIsClusterOut] = kMeans(data, centroids)
         isAchived=false;
     end
 
-    if isAchived == false
-       [getCentroids,getindexOfDataIsCluster] = kMeans(data, newCentroids);
+    if isAchived == false && maxRecursion > 0
+       [getCentroids,getindexOfDataIsCluster] = kMeans(data, newCentroids,maxRecursion-1);
        newCentroidsOut = getCentroids;
        indexOfDataIsClusterOut = getindexOfDataIsCluster;
     else

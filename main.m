@@ -1,5 +1,7 @@
-data = [2 4 -10 12 3 20 30 9 11];
-centroids = [1 5 30];
+data = [3+3i 7+7i -3+3i -7+7i -3-3i -7-7i 3-3i 7-7i];
+centroids = [5+5i -5+5i -5-5i 5-5i];
 
-[newCentroids, indexOfDataCluster] = kMeans(data,centroids);
+[newCentroids, indexOfDataCluster] = kMeans(data,centroids,3);
 
+newCentroids
+indexOfDataCluster
