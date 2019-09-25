@@ -11,10 +11,10 @@ function [newCentroidsOut,indexOfDataIsClusterOut] = kMeans(data, centroids, max
     end
 
     clusters = unique(indexOfDataIsCluster);
-    clusterNodeCount = zeros(1,length(clusters));
+    clusterNodeCount = zeros(1,length(centroids)); %clusters
     for j=1:1:length(clusters)
         cluster = clusters(j);
-        clusterNodeCount(j) = sum(indexOfDataIsCluster == cluster);
+        clusterNodeCount(cluster) = sum(indexOfDataIsCluster == cluster);
     end
 
     newCentroids = centroidNodeSum./clusterNodeCount;
