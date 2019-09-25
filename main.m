@@ -1,5 +1,18 @@
-data = [2 4 -10 12 3 20 30 9 11];
-centroids = [1 5 30];
+matExp = 0;
+dispersion = 0.02;
+countData = 2;
 
-[newCentroids, indexOfDataCluster] = kMeans(data,centroids);
+m1=[1;0;0;0];
+m2=[0;1;0;0];
+m3=[0;0;1;0];
+m4=[0;0;0;1];
+
+ 
+centroids = [m1 m2 m3 m4];
+
+ data = generateDataWithNoise(centroids,countData, matExp, dispersion, false);
+
+% [newCentroids, indexOfDataCluster] = kMeans(data,centroids,1);
+% newCentroids
+% indexOfDataCluster
 
